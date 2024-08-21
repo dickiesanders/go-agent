@@ -2,8 +2,8 @@ name: Build and Release for Multiple Platforms
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
   pull_request:
     branches:
       - main
@@ -63,5 +63,6 @@ jobs:
             go-agent-windows-arm64
             go-agent-linux-arm64
             go-agent-darwin-arm64
+          draft: false # Set to true if you want to create the release as a draft first
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
