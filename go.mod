@@ -1,6 +1,6 @@
 module github.com/dickiesanders/go-agent
 
-go 1.23.0
+go 1.23
 
 require (
 	github.com/go-ole/go-ole v1.2.6 // indirect
