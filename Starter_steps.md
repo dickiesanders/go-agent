@@ -144,5 +144,3 @@ For additional isolation, you can use a container-based development environment 
 3. **Set up version control** with Git and add a `.gitignore`.
 4. **Write code and manage dependencies** with `go get` and `go.mod`.
 5. **Commit and push the code** to GitHub for version control and distribution.
-
-This process will give you an isolated, easily portable Go project ready for collaborative development and shipping.
