@@ -87,6 +87,12 @@ For local development, use:
 go run cmd/main.go -console
 ```
 
+Run the following command to suppress the warnings:
+
+```bash
+CGO_CFLAGS="-Wno-deprecated-declarations" go run cmd/main.go
+```
+
 ### Testing
 
 To run the tests:
