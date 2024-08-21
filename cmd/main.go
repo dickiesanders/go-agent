@@ -8,11 +8,13 @@ import (
     "os"
     "sync/atomic"
     "time"
+    "runtime"
 
     "github.com/dickiesanders/go-agent/internal/metrics"
     "github.com/shirou/gopsutil/disk"
     "github.com/shirou/gopsutil/host"
     "github.com/shirou/gopsutil/process"
+    "github.com/StackExchange/wmi"
 )
 
 var isPaused int32 // 0 = running, 1 = paused
@@ -35,6 +37,11 @@ type OneTimeHostInfo struct {
     CPUInfo      *metrics.CPUInfo
     IP           string
     IsVirtual    bool
+}
+
+type win32_ComputerSystem struct {
+    Manufacturer string
+    Model        string
 }
 
 // Simulate sending one-time host information to the mothership
@@ -162,12 +169,48 @@ func getLocalIP() string {
 
 // Check if the system is virtual by querying host info
 func checkIfVirtual() bool {
-    info, err := host.Info()
-    if err != nil {
-        log.Printf("Error checking if system is virtual: %v", err)
+    // Check if we're on Linux, macOS, or Windows
+    switch runtime.GOOS {
+    case "linux", "darwin":
+        info, err := host.Info()
+        if err != nil {
+            log.Printf("Error checking if system is virtual: %v", err)
+            return false
+        }
+        return info.VirtualizationSystem != ""
+    
+    case "windows":
+        return checkIfVirtualWindows()
+    
+    default:
+        log.Printf("Unsupported OS: %s", runtime.GOOS)
         return false
     }
-    return info.VirtualizationSystem != ""
+}
+
+// Check if the system is virtual on Windows
+func checkIfVirtualWindows() bool {
+    var cs []win32_ComputerSystem
+    query := wmi.CreateQuery(&cs, "")
+    err := wmi.Query(query, &cs)
+    if err != nil {
+        log.Printf("Error checking if system is virtual on Windows: %v", err)
+        return false
+    }
+
+    if len(cs) > 0 {
+        // Look for common VM-related strings in the manufacturer or model
+        manufacturer := cs[0].Manufacturer
+        model := cs[0].Model
+        if manufacturer == "Microsoft Corporation" && (model == "Virtual Machine" || model == "Hyper-V") {
+            return true
+        }
+        if manufacturer == "VMware, Inc." || manufacturer == "Xen" || manufacturer == "QEMU" {
+            return true
+        }
+    }
+
+    return false
 }
 
 func main() {
