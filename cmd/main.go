@@ -3,9 +3,9 @@ package main
 import (
     "fmt"
     "log"
-    "time"
-    "sync/atomic"
     "os"
+    "sync/atomic"
+    "time"
 
     "github.com/dickiesanders/go-agent/internal/metrics"
     "github.com/shirou/gopsutil/process"
@@ -21,7 +21,7 @@ func gatherBasicMetrics() (float64, uint64) {
 
     cpuPercent, memoryUsage, err := metrics.GatherBasicMetrics()
     if err != nil {
-        log.Fatal(err)
+        log.Printf("Error gathering basic metrics: %v", err)
     }
     return cpuPercent, memoryUsage
 }
@@ -33,9 +33,39 @@ func gatherNetworkMetrics() ([]metrics.NetworkStat, []metrics.ConnectionStat, er
 
     netStats, connStats, err := metrics.GatherNetworkMetrics()
     if err != nil {
-        return nil, nil, err
+        log.Printf("Error gathering network metrics: %v", err)
     }
-    return netStats, connStats, nil
+    return netStats, connStats, err
+}
+
+func gatherSystemInfo() {
+    // Gather OS Info
+    platform, platformVersion, kernelVersion := metrics.GatherOSInfo()
+    if platform == "" {
+        log.Printf("Failed to gather OS info")
+    } else {
+        fmt.Printf("Platform: %s\nVersion: %s\nKernel: %s\n", platform, platformVersion, kernelVersion)
+    }
+
+    // Gather CPU Info
+    cpuInfo, err := metrics.GatherCPUInfo()
+    if err != nil {
+        log.Printf("Failed to gather CPU info")
+    } else {
+        for _, cpu := range cpuInfo {
+            fmt.Printf("CPU Model: %s, Cores: %d, Vendor: %s\n", cpu.ModelName, cpu.Cores, cpu.VendorID)
+        }
+    }
+
+    // Gather Disk I/O Info
+    diskIO, err := metrics.GatherDiskIOInfo()
+    if err != nil {
+        log.Printf("Failed to gather Disk I/O info")
+    } else {
+        for name, io := range diskIO {
+            fmt.Printf("Disk: %s, ReadBytes: %d, WriteBytes: %d\n", name, io.ReadBytes, io.WriteBytes)
+        }
+    }
 }
 
 func watchdog(proc *process.Process) {
@@ -77,6 +107,9 @@ func main() {
 
     // Start the watchdog goroutine
     go watchdog(proc)
+
+    // Gather system information
+    gatherSystemInfo()
 
     // Main loop for data collection
     for {
