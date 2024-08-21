@@ -54,6 +54,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: ./ # Downloads all artifacts
+        
+      - name: Rename file 
+        run: | 
+          mv go-agent-windows-amd64/go-agent-windows-amd64 go-agent-windows-amd64/go-agent-windows-amd64.exe
+          mv go-agent-windows-arm64/go-agent-windows-arm64 go-agent-windows-arm64/go-agent-windows-arm64.exe
 
       - name: Generate release tag
         id: tag
@@ -65,10 +70,10 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
-            go-agent-windows-amd64/go-agent-windows-amd64
+            go-agent-windows-amd64/go-agent-windows-amd64.exe
             go-agent-linux-amd64/go-agent-linux-amd64
             go-agent-darwin-amd64/go-agent-darwin-amd64
-            go-agent-windows-arm64/go-agent-windows-arm64
+            go-agent-windows-arm64/go-agent-windows-arm64.exe
             go-agent-linux-arm64/go-agent-linux-arm64
             go-agent-darwin-arm64/go-agent-darwin-arm64
           draft: false # Set to true if you want to create the release as a draft first
