@@ -13,5 +13,7 @@
 *.log
 vendor/
 
+.DS_Store
+*/.DS_Store
 Ignore_warnings.md
 Starter_steps.md
