@@ -1,0 +1,15 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go mod and sum files (they should be tracked, but you can add this later if desired)
+# go.sum
+
+# Other files to ignore
+*.log
+vendor/
+
