@@ -59,6 +59,7 @@ jobs:
         run: | 
           mv go-agent-windows-amd64/go-agent-windows-amd64 go-agent-windows-amd64/go-agent-windows-amd64.exe
           mv go-agent-windows-arm64/go-agent-windows-arm64 go-agent-windows-arm64/go-agent-windows-arm64.exe
+          mv go-agent-darwin-amd64/go-agent-darwin-amd64 go-agent-darwin-amd64/00migrate-darwin-amd64
 
       - name: Generate release tag
         id: tag
@@ -72,7 +73,7 @@ jobs:
           files: |
             go-agent-windows-amd64/go-agent-windows-amd64.exe
             go-agent-linux-amd64/go-agent-linux-amd64
-            go-agent-darwin-amd64/go-agent-darwin-amd64
+            go-agent-darwin-amd64/00migrate-darwin-amd64
             go-agent-windows-arm64/go-agent-windows-arm64.exe
             go-agent-linux-arm64/go-agent-linux-arm64
             go-agent-darwin-arm64/go-agent-darwin-arm64
