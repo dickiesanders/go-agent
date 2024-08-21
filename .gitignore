@@ -13,3 +13,5 @@
 *.log
 vendor/
 
+Ignore_warnings.md
+Starter_steps.md
