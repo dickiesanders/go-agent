@@ -1,8 +1,11 @@
 package metrics
 
 import (
+    "fmt" // Import fmt to fix the undefined error
     "log"
-    "github.com/shirou/gopsutil/cpu"
+
+    "github.com/klauspost/cpuid/v2"     // For CPU information
+    "github.com/shirou/gopsutil/cpu"    // Keep for CPU percentage collection
     "github.com/shirou/gopsutil/disk"
     "github.com/shirou/gopsutil/host"
     "github.com/shirou/gopsutil/mem"
@@ -22,8 +25,18 @@ type ConnectionStat struct {
     RemotePort uint32
 }
 
+// CPUInfo holds the basic CPU information using klauspost/cpuid
+type CPUInfo struct {
+    BrandName     string
+    PhysicalCores int
+    ThreadsPerCore int
+    VendorID      string
+    CacheLine     int
+    Features      []string
+}
+
 func GatherBasicMetrics() (float64, uint64, error) {
-    // Gather CPU percentage
+    // Gather CPU percentage using gopsutil/cpu
     cpuPercents, err := cpu.Percent(0, false)
     if err != nil {
         log.Printf("Error gathering CPU percentage: %v", err)
@@ -89,12 +102,26 @@ func GatherOSInfo() (string, string, string) {
     return info.Platform, info.PlatformVersion, info.KernelVersion
 }
 
-func GatherCPUInfo() ([]cpu.InfoStat, error) {
-    cpuInfo, err := cpu.Info()
-    if err != nil {
-        log.Printf("Error gathering CPU information: %v", err)
-        return nil, err
+// GatherCPUInfo collects detailed CPU information using klauspost/cpuid
+func GatherCPUInfo() (*CPUInfo, error) {
+    cpu := cpuid.CPU
+
+    // Check if the CPU information is valid
+    if cpu.BrandName == "" {
+        log.Printf("Unable to gather CPU information")
+        return nil, fmt.Errorf("unable to gather CPU information")
     }
+
+    // Collect detailed CPU info
+    cpuInfo := &CPUInfo{
+        BrandName:    cpu.BrandName,
+        PhysicalCores: cpu.PhysicalCores,
+        ThreadsPerCore: cpu.ThreadsPerCore,
+        VendorID:     cpu.VendorID.String(),
+        CacheLine:    cpu.CacheLine,
+        Features:     cpu.FeatureSet(),
+    }
+
     return cpuInfo, nil
 }
 

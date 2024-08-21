@@ -47,14 +47,14 @@ func gatherSystemInfo() {
         fmt.Printf("Platform: %s\nVersion: %s\nKernel: %s\n", platform, platformVersion, kernelVersion)
     }
 
-    // Gather CPU Info
+    // Gather CPU Info using klauspost/cpuid
     cpuInfo, err := metrics.GatherCPUInfo()
     if err != nil {
-        log.Printf("Failed to gather CPU info")
+        log.Printf("Failed to gather CPU info: %v", err)
     } else {
-        for _, cpu := range cpuInfo {
-            fmt.Printf("CPU Model: %s, Cores: %d, Vendor: %s\n", cpu.ModelName, cpu.Cores, cpu.VendorID)
-        }
+        fmt.Printf("CPU Brand: %s\nPhysical Cores: %d\nThreads per Core: %d\nVendor ID: %s\nCache Line Size: %d\n",
+            cpuInfo.BrandName, cpuInfo.PhysicalCores, cpuInfo.ThreadsPerCore, cpuInfo.VendorID, cpuInfo.CacheLine)
+        fmt.Println("CPU Features:", cpuInfo.Features)
     }
 
     // Gather Disk I/O Info
