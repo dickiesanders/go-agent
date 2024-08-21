@@ -219,7 +219,28 @@ func main() {
     flag.Parse()
 
     // Debug: Print the console flag status
-    fmt.Println("Console flag enabled:", *consoleFlag)
+    // fmt.Println("Console flag enabled:", *consoleFlag)
+
+	var logger *log.Logger
+	if *consoleFlag {
+		// Create a log file to store the console output
+		file, err := os.OpenFile("console_output.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			log.Fatalf("Failed to create log file: %v", err)
+		}
+		defer file.Close()
+
+		// Create a multi-writer to write to both stdout and the log file
+		multiWriter := io.MultiWriter(os.Stdout, file)
+		logger = log.New(multiWriter, "", log.LstdFlags)
+
+		logger.Println("Console flag enabled: true")
+	} else {
+		logger = log.New(os.Stdout, "", log.LstdFlags)
+	}
+
+	// Example usage of the logger
+	logger.Println("Starting the agent...")
 
     // Register the agent with the mothership and send one-time host information
     hostInfo := gatherOneTimeHostInfo()
