@@ -14,7 +14,7 @@ import (
     "github.com/shirou/gopsutil/disk"
     "github.com/shirou/gopsutil/host"
     "github.com/shirou/gopsutil/process"
-    // "github.com/StackExchange/wmi"
+    // "github.com/yusufpapurcu/wmi" wmic
 )
 
 var isPaused int32 // 0 = running, 1 = paused
@@ -46,34 +46,32 @@ type OneTimeHostInfo struct {
 
 // Simulate sending one-time host information to the mothership
 func registerAgentWithHostInfo(hostInfo OneTimeHostInfo, consoleFlag bool, logger *log.Logger) {
-    if consoleFlag {
-        logger.Println("\nRegistering agent with the following host information:")
-        logger.Printf("Hostname: %s\n", hostInfo.Hostname)
-        logger.Printf("FQDN: %s\n", hostInfo.FQDN)
-        logger.Printf("IP Address: %s\n", hostInfo.IP)
-        
-        // Improved formatting for CPU Info
-        if hostInfo.CPUInfo != nil {
-            logger.Println("CPU Information:")
-            logger.Printf("  Brand Name: %s\n", hostInfo.CPUInfo.BrandName)
-            logger.Printf("  Physical Cores: %d\n", hostInfo.CPUInfo.PhysicalCores)
-            logger.Printf("  Threads per Core: %d\n", hostInfo.CPUInfo.ThreadsPerCore)
-            logger.Printf("  Vendor ID: %s\n", hostInfo.CPUInfo.VendorID)
-            logger.Printf("  Cache Line Size: %d bytes\n", hostInfo.CPUInfo.CacheLine)
-            logger.Printf("  Features: %v\n", hostInfo.CPUInfo.Features)
-        } else {
-            logger.Println("CPU Information: Not available")
-        }
-
-        logger.Printf("Is Virtual: %v\n", hostInfo.IsVirtual)
+    logger.Println("Registering agent with the following host information:")
+    logger.Printf("Hostname: %s\n", hostInfo.Hostname)
+    logger.Printf("FQDN: %s\n", hostInfo.FQDN)
+    logger.Printf("IP Address: %s\n", hostInfo.IP)
+    
+    // Improved formatting for CPU Info
+    if hostInfo.CPUInfo != nil {
+        logger.Println("CPU Information:")
+        logger.Printf("  Brand Name: %s\n", hostInfo.CPUInfo.BrandName)
+        logger.Printf("  Physical Cores: %d\n", hostInfo.CPUInfo.PhysicalCores)
+        logger.Printf("  Threads per Core: %d\n", hostInfo.CPUInfo.ThreadsPerCore)
+        logger.Printf("  Vendor ID: %s\n", hostInfo.CPUInfo.VendorID)
+        logger.Printf("  Cache Line Size: %d bytes\n", hostInfo.CPUInfo.CacheLine)
+        logger.Printf("  Features: %v\n", hostInfo.CPUInfo.Features)
+    } else {
+        logger.Println("CPU Information: Not available")
     }
+
+    logger.Printf("Is Virtual: %v\n", hostInfo.IsVirtual)
 
     // Logic to send the host information to the mothership
 }
 
 // Simulate pushing data to the server
 func pushDataToServer(data []MetricsData, logger *log.Logger) {
-    logger.Printf("\nPushing %d metrics to the server...\n", len(data))
+    logger.Printf("Pushing %d metrics to the server...\n", len(data))
     // Here you would add your logic to send the data to a remote server.
 }
 
