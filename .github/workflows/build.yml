@@ -64,14 +64,13 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
-          path: ./
-          # files: |
-          #   go-agent-windows-amd64
-          #   go-agent-linux-amd64
-          #   go-agent-darwin-amd64
-          #   go-agent-windows-arm64
-          #   go-agent-linux-arm64
-          #   go-agent-darwin-arm64
+          files: |
+            /home/runner/work/go-agent/go-agent/go-agent-windows-amd64
+            /home/runner/work/go-agent/go-agent/go-agent-linux-amd64
+            /home/runner/work/go-agent/go-agent/go-agent-darwin-amd64
+            /home/runner/work/go-agent/go-agent/go-agent-windows-arm64
+            /home/runner/work/go-agent/go-agent/go-agent-linux-arm64
+            /home/runner/work/go-agent/go-agent/go-agent-darwin-arm64
           draft: false # Set to true if you want to create the release as a draft first
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
