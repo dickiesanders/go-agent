@@ -73,4 +73,4 @@ jobs:
             go-agent-darwin-arm64
           draft: false # Set to true if you want to create the release as a draft first
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
