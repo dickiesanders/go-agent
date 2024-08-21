@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [windows, linux, darwin]
-        arch: [amd64, arm64]  # Build for both 64-bit and ARM architectures
+        arch: [amd64, arm64]
 
     steps:
       - name: Checkout code
@@ -25,14 +25,14 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: 1.23
+          go-version: 1.17
 
-      - name: Set GOOS and GOARCH
+      - name: Build
         run: |
           echo "Building for OS: ${{ matrix.os }}, Arch: ${{ matrix.arch }}"
           GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} CGO_CFLAGS="-Wno-deprecated-declarations" go build -o go-agent-${{ matrix.os }}-${{ matrix.arch }} cmd/main.go
 
-      - name: Archive Artifacts
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: go-agent-${{ matrix.os }}-${{ matrix.arch }}
@@ -51,13 +51,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: |
-            go-agent-windows-amd64
-            go-agent-linux-amd64
-            go-agent-darwin-amd64
-            go-agent-windows-arm64
-            go-agent-linux-arm64
-            go-agent-darwin-arm64
+          path: ./ # Downloads all artifacts
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
