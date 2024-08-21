@@ -10,6 +10,7 @@ import (
     "github.com/shirou/gopsutil/host"
     "github.com/shirou/gopsutil/mem"
     "github.com/shirou/gopsutil/net"
+    "github.com/shirou/gopsutil/process"
 )
 
 type NetworkStat struct {
@@ -33,6 +34,14 @@ type CPUInfo struct {
     VendorID      string
     CacheLine     int
     Features      []string
+}
+
+// ProcessInfo holds information about a single process
+type ProcessInfo struct {
+    PID         int32
+    Name        string
+    CPUPercent  float64
+    MemoryUsage uint64
 }
 
 func GatherBasicMetrics() (float64, uint64, error) {
@@ -134,3 +143,49 @@ func GatherDiskIOInfo() (map[string]disk.IOCountersStat, error) {
     return ioCounters, nil
 }
 
+// GatherProcessMetrics collects information about running processes, including CPU and memory usage
+func GatherProcessMetrics() ([]ProcessInfo, error) {
+    processes, err := process.Processes()
+    if err != nil {
+        log.Printf("Error gathering process information: %v", err)
+        return nil, err
+    }
+
+    var processInfoList []ProcessInfo
+
+    for _, proc := range processes {
+        // Attempt to get the process name
+        name, err := proc.Name()
+        if err != nil {
+            // Skip processes that we cannot read or access
+            if err.Error() == "EOF" || err.Error() == "operation not permitted" {
+                continue
+            }
+            log.Printf("Error getting process name for PID %d: %v", proc.Pid, err)
+            continue
+        }
+
+        // Attempt to get CPU usage
+        cpuPercent, err := proc.CPUPercent()
+        if err != nil {
+            log.Printf("Error getting process CPU usage for PID %d: %v", proc.Pid, err)
+            continue
+        }
+
+        // Attempt to get memory usage
+        memInfo, err := proc.MemoryInfo()
+        if err != nil {
+            log.Printf("Error getting process memory usage for PID %d: %v", proc.Pid, err)
+            continue
+        }
+
+        processInfoList = append(processInfoList, ProcessInfo{
+            PID:         proc.Pid,
+            Name:        name,
+            CPUPercent:  cpuPercent,
+            MemoryUsage: memInfo.RSS,
+        })
+    }
+
+    return processInfoList, nil
+}

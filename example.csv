@@ -1,0 +1,494 @@
+PID: 1, Name: launchd, CPU: 1.12%, Memory: 8798208 bytes
+PID: 305, Name: logd, CPU: 0.16%, Memory: 10076160 bytes
+PID: 307, Name: UserEventAgent, CPU: 0.01%, Memory: 4898816 bytes
+PID: 309, Name: uninstalld, CPU: 0.00%, Memory: 1441792 bytes
+PID: 310, Name: fseventsd, CPU: 0.21%, Memory: 6225920 bytes
+PID: 314, Name: systemstats, CPU: 0.01%, Memory: 7208960 bytes
+PID: 316, Name: configd, CPU: 0.02%, Memory: 4259840 bytes
+PID: 318, Name: powerd, CPU: 0.03%, Memory: 5783552 bytes
+PID: 323, Name: remoted, CPU: 0.00%, Memory: 2146304 bytes
+PID: 328, Name: watchdogd, CPU: 0.00%, Memory: 1687552 bytes
+PID: 332, Name: mds, CPU: 1.00%, Memory: 17809408 bytes
+PID: 334, Name: kernelmanagerd, CPU: 0.00%, Memory: 3915776 bytes
+PID: 335, Name: diskarbitrationd, CPU: 0.03%, Memory: 2457600 bytes
+PID: 340, Name: syslogd, CPU: 0.00%, Memory: 491520 bytes
+PID: 343, Name: thermalmonitord, CPU: 0.02%, Memory: 2949120 bytes
+PID: 344, Name: opendirectoryd, CPU: 0.09%, Memory: 10174464 bytes
+PID: 345, Name: apsd, CPU: 0.01%, Memory: 5521408 bytes
+PID: 346, Name: launchservicesd, CPU: 0.04%, Memory: 5472256 bytes
+PID: 347, Name: timed, CPU: 0.00%, Memory: 2965504 bytes
+PID: 348, Name: usbmuxd, CPU: 0.00%, Memory: 2129920 bytes
+PID: 349, Name: securityd, CPU: 0.01%, Memory: 4521984 bytes
+PID: 354, Name: autofsd, CPU: 0.00%, Memory: 1867776 bytes
+PID: 355, Name: dasd, CPU: 0.09%, Memory: 6225920 bytes
+PID: 356, Name: kdc, CPU: 0.00%, Memory: 2326528 bytes
+PID: 358, Name: distnoted, CPU: 0.02%, Memory: 2768896 bytes
+PID: 362, Name: logind, CPU: 0.00%, Memory: 3096576 bytes
+PID: 363, Name: revisiond, CPU: 0.00%, Memory: 3948544 bytes
+PID: 364, Name: KernelEventAgent, CPU: 0.00%, Memory: 1048576 bytes
+PID: 367, Name: bluetoothd, CPU: 0.09%, Memory: 9469952 bytes
+PID: 368, Name: notifyd, CPU: 0.05%, Memory: 2605056 bytes
+PID: 370, Name: corebrightnessd, CPU: 0.08%, Memory: 4669440 bytes
+PID: 371, Name: AirPlayXPCHelper, CPU: 0.00%, Memory: 4308992 bytes
+PID: 374, Name: syspolicyd, CPU: 0.33%, Memory: 25214976 bytes
+PID: 375, Name: WindowServer, CPU: 4.14%, Memory: 70385664 bytes
+PID: 376, Name: cfprefsd, CPU: 0.06%, Memory: 3178496 bytes
+PID: 379, Name: loginwindow, CPU: 0.06%, Memory: 12681216 bytes
+PID: 380, Name: lsd, CPU: 0.01%, Memory: 10862592 bytes
+PID: 381, Name: contextstored, CPU: 0.02%, Memory: 8339456 bytes
+PID: 383, Name: coreservicesd, CPU: 0.01%, Memory: 3735552 bytes
+PID: 386, Name: mDNSResponder, CPU: 0.06%, Memory: 9093120 bytes
+PID: 387, Name: apfsd, CPU: 0.00%, Memory: 2621440 bytes
+PID: 388, Name: runningboardd, CPU: 0.13%, Memory: 7553024 bytes
+PID: 389, Name: nsurlsessiond, CPU: 0.02%, Memory: 8306688 bytes
+PID: 391, Name: airportd, CPU: 0.07%, Memory: 8699904 bytes
+PID: 395, Name: analyticsd, CPU: 0.02%, Memory: 6963200 bytes
+PID: 396, Name: coreaudiod, CPU: 0.58%, Memory: 35422208 bytes
+PID: 400, Name: mDNSResponderHelper, CPU: 0.00%, Memory: 2457600 bytes
+PID: 401, Name: symptomsd, CPU: 0.05%, Memory: 7602176 bytes
+PID: 407, Name: nesessionmanager, CPU: 0.01%, Memory: 4947968 bytes
+PID: 408, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 420, Name: socketfilterfw, CPU: 0.08%, Memory: 4636672 bytes
+PID: 421, Name: cron, CPU: 0.00%, Memory: 1212416 bytes
+PID: 443, Name: systemstatusd, CPU: 0.00%, Memory: 2998272 bytes
+PID: 453, Name: plugin-container, CPU: 0.41%, Memory: 72941568 bytes
+PID: 469, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 471, Name: distnoted, CPU: 0.00%, Memory: 2179072 bytes
+PID: 477, Name: awdd, CPU: 0.00%, Memory: 2654208 bytes
+PID: 482, Name: distnoted, CPU: 0.00%, Memory: 1622016 bytes
+PID: 483, Name: searchpartyd, CPU: 0.01%, Memory: 3948544 bytes
+PID: 484, Name: authd, CPU: 0.02%, Memory: 3489792 bytes
+PID: 485, Name: diskmanagementd, CPU: 0.04%, Memory: 4096000 bytes
+PID: 486, Name: appleh13camerad, CPU: 0.02%, Memory: 4505600 bytes
+PID: 487, Name: UVCAssistant, CPU: 0.09%, Memory: 4341760 bytes
+PID: 497, Name: sng, CPU: 0.06%, Memory: 4784128 bytes
+PID: 498, Name: geo, CPU: 0.01%, Memory: 3850240 bytes
+PID: 500, Name: bash, CPU: 0.00%, Memory: 262144 bytes
+PID: 502, Name: ir_agent, CPU: 0.02%, Memory: 7077888 bytes
+PID: 505, Name: pluggablesvc, CPU: 0.13%, Memory: 7438336 bytes
+PID: 506, Name: durd, CPU: 0.02%, Memory: 3358720 bytes
+PID: 507, Name: IntuneMdmDaemon, CPU: 0.35%, Memory: 58884096 bytes
+PID: 508, Name: hdc, CPU: 0.16%, Memory: 7045120 bytes
+PID: 510, Name: rpc.net, CPU: 0.00%, Memory: 446464 bytes
+PID: 518, Name: appleeventsd, CPU: 0.00%, Memory: 3358720 bytes
+PID: 519, Name: com.apple.DriverKit-IOUserDockChannelSerial, CPU: 0.00%, Memory: 65536 bytes
+PID: 520, Name: com.apple.AppleUserHIDDrivers, CPU: 0.13%, Memory: 1490944 bytes
+PID: 527, Name: distnoted, CPU: 0.00%, Memory: 1605632 bytes
+PID: 552, Name: mds_stores, CPU: 0.61%, Memory: 87097344 bytes
+PID: 555, Name: sharedfilelistd, CPU: 0.00%, Memory: 3915776 bytes
+PID: 556, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 557, Name: com.crowdstrike.falcon.Agent, CPU: 0.00%, Memory: 0 bytes
+PID: 559, Name: distnoted, CPU: 0.00%, Memory: 1589248 bytes
+PID: 576, Name: oahd, CPU: 0.00%, Memory: 1196032 bytes
+PID: 591, Name: audioclocksyncd, CPU: 0.05%, Memory: 2572288 bytes
+PID: 666, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 667, Name: locationd, CPU: 0.04%, Memory: 10829824 bytes
+PID: 669, Name: rapid7_endpoint_broker, CPU: 0.02%, Memory: 13533184 bytes
+PID: 674, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 675, Name: ir_agent, CPU: 0.45%, Memory: 40861696 bytes
+PID: 696, Name: wifianalyticsd, CPU: 0.00%, Memory: 3325952 bytes
+PID: 728, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 764, Name: distnoted, CPU: 0.03%, Memory: 3833856 bytes
+PID: 768, Name: securityd_service, CPU: 0.00%, Memory: 1032192 bytes
+PID: 774, Name: UserEventAgent, CPU: 0.01%, Memory: 4046848 bytes
+PID: 778, Name: universalaccessd, CPU: 0.00%, Memory: 5128192 bytes
+PID: 779, Name: WindowManager, CPU: 0.04%, Memory: 13828096 bytes
+PID: 782, Name: lsd, CPU: 0.01%, Memory: 9158656 bytes
+PID: 786, Name: nsurlsessiond, CPU: 0.01%, Memory: 8454144 bytes
+PID: 787, Name: rapportd, CPU: 0.00%, Memory: 5029888 bytes
+PID: 789, Name: usernoted, CPU: 0.01%, Memory: 9404416 bytes
+PID: 791, Name: WiFiAgent, CPU: 0.00%, Memory: 4751360 bytes
+PID: 793, Name: ARDAgent, CPU: 0.00%, Memory: 3440640 bytes
+PID: 801, Name: Terminal, CPU: 0.04%, Memory: 17006592 bytes
+PID: 802, Name: identityservicesd, CPU: 0.00%, Memory: 7585792 bytes
+PID: 805, Name: NotificationCenter, CPU: 0.02%, Memory: 16482304 bytes
+PID: 808, Name: SSMenuAgent, CPU: 0.00%, Memory: 3915776 bytes
+PID: 816, Name: Electron, CPU: 0.23%, Memory: 92602368 bytes
+PID: 818, Name: Dock, CPU: 0.02%, Memory: 27508736 bytes
+PID: 819, Name: fontd, CPU: 0.00%, Memory: 3391488 bytes
+PID: 820, Name: ControlCenter, CPU: 0.05%, Memory: 30261248 bytes
+PID: 821, Name: SystemUIServer, CPU: 0.00%, Memory: 3801088 bytes
+PID: 823, Name: Finder, CPU: 0.05%, Memory: 20643840 bytes
+PID: 827, Name: fontworker, CPU: 0.00%, Memory: 2637824 bytes
+PID: 830, Name: ContinuityCaptureAgent, CPU: 0.02%, Memory: 8093696 bytes
+PID: 832, Name: filecoordinationd, CPU: 0.00%, Memory: 6291456 bytes
+PID: 833, Name: pboard, CPU: 0.00%, Memory: 5423104 bytes
+PID: 846, Name: sharedfilelistd, CPU: 0.00%, Memory: 4423680 bytes
+PID: 848, Name: useractivityd, CPU: 0.00%, Memory: 4489216 bytes
+PID: 849, Name: com.apple.dock.extra, CPU: 0.04%, Memory: 7077888 bytes
+PID: 850, Name: automountd, CPU: 0.00%, Memory: 2015232 bytes
+PID: 851, Name: AMPDeviceDiscoveryAgent, CPU: 0.00%, Memory: 2916352 bytes
+PID: 854, Name: ACCFinderSync, CPU: 0.00%, Memory: 3293184 bytes
+PID: 863, Name: Spotlight, CPU: 0.03%, Memory: 50184192 bytes
+PID: 865, Name: imklaunchagent, CPU: 0.00%, Memory: 3866624 bytes
+PID: 873, Name: sharingd, CPU: 0.01%, Memory: 9207808 bytes
+PID: 875, Name: corespotlightd, CPU: 0.02%, Memory: 21528576 bytes
+PID: 878, Name: commerce, CPU: 0.00%, Memory: 2588672 bytes
+PID: 881, Name: PAH_Extension, CPU: 0.00%, Memory: 4177920 bytes
+PID: 889, Name: CVMServer, CPU: 0.00%, Memory: 1032192 bytes
+PID: 896, Name: chrome_crashpad_handler, CPU: 0.00%, Memory: 1933312 bytes
+PID: 900, Name: Code - Insiders Helper (GPU), CPU: 0.14%, Memory: 55590912 bytes
+PID: 903, Name: Code - Insiders Helper, CPU: 0.01%, Memory: 15417344 bytes
+PID: 906, Name: login, CPU: 0.00%, Memory: 1867776 bytes
+PID: 908, Name: Code - Insiders Helper (Renderer), CPU: 0.25%, Memory: 46301184 bytes
+PID: 909, Name: Code - Insiders Helper (Renderer), CPU: 0.19%, Memory: 43433984 bytes
+PID: 913, Name: fish, CPU: 0.00%, Memory: 1523712 bytes
+PID: 917, Name: SubmitDiagInfo, CPU: 0.00%, Memory: 3309568 bytes
+PID: 922, Name: login, CPU: 0.00%, Memory: 1867776 bytes
+PID: 923, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 927, Name: login, CPU: 0.00%, Memory: 1867776 bytes
+PID: 928, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 939, Name: login, CPU: 0.00%, Memory: 1867776 bytes
+PID: 943, Name: fish, CPU: 0.00%, Memory: 278528 bytes
+PID: 1020, Name: Code - Insiders Helper, CPU: 0.11%, Memory: 24231936 bytes
+PID: 1021, Name: Code - Insiders Helper, CPU: 0.02%, Memory: 10321920 bytes
+PID: 1022, Name: Code - Insiders Helper, CPU: 0.02%, Memory: 13746176 bytes
+PID: 1023, Name: ir_agent, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1037, Name: corespeechd, CPU: 0.00%, Memory: 3817472 bytes
+PID: 1040, Name: IntuneMdmAgent, CPU: 0.00%, Memory: 3407872 bytes
+PID: 1046, Name: PanGPS, CPU: 0.03%, Memory: 3588096 bytes
+PID: 1051, Name: icdd, CPU: 0.00%, Memory: 5341184 bytes
+PID: 1053, Name: GlobalProtect, CPU: 0.03%, Memory: 11075584 bytes
+PID: 1054, Name: XCreds, CPU: 0.01%, Memory: 8093696 bytes
+PID: 1059, Name: AirPlayUIAgent, CPU: 0.00%, Memory: 3489792 bytes
+PID: 1061, Name: dura, CPU: 0.02%, Memory: 4915200 bytes
+PID: 1062, Name: Falcon Notifications, CPU: 0.00%, Memory: 0 bytes
+PID: 1063, Name: imagent, CPU: 0.00%, Memory: 5963776 bytes
+PID: 1067, Name: diagnostics_agent, CPU: 0.00%, Memory: 4407296 bytes
+PID: 1069, Name: TextInputMenuAgent, CPU: 0.00%, Memory: 5029888 bytes
+PID: 1070, Name: remindd, CPU: 0.01%, Memory: 8192000 bytes
+PID: 1073, Name: ctkahp, CPU: 0.00%, Memory: 2490368 bytes
+PID: 1085, Name: ctkahp, CPU: 0.00%, Memory: 3227648 bytes
+PID: 1091, Name: Code - Insiders Helper (Plugin), CPU: 0.46%, Memory: 48889856 bytes
+PID: 1093, Name: Code - Insiders Helper, CPU: 0.52%, Memory: 27770880 bytes
+PID: 1094, Name: Code - Insiders Helper (Plugin), CPU: 0.32%, Memory: 50380800 bytes
+PID: 1096, Name: parentalcontrolsd, CPU: 0.00%, Memory: 2932736 bytes
+PID: 1100, Name: familycircled, CPU: 0.00%, Memory: 4030464 bytes
+PID: 1128, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1129, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1130, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1142, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1143, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1147, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1168, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1303, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9666560 bytes
+PID: 1305, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1315, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9224192 bytes
+PID: 1321, Name: Code - Insiders Helper (Plugin), CPU: 0.01%, Memory: 7471104 bytes
+PID: 1331, Name: Code - Insiders Helper (Plugin), CPU: 0.04%, Memory: 7897088 bytes
+PID: 1364, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 8585216 bytes
+PID: 1365, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 8126464 bytes
+PID: 1373, Name: Code - Insiders Helper (Plugin), CPU: 0.01%, Memory: 6799360 bytes
+PID: 1456, Name: universalAccessAuthWarn, CPU: 0.00%, Memory: 3768320 bytes
+PID: 1495, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 10027008 bytes
+PID: 1512, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1530, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1612, Name: mdbulkimport, CPU: 0.00%, Memory: 6881280 bytes
+PID: 1615, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 8617984 bytes
+PID: 1620, Name: terraform-ls, CPU: 0.05%, Memory: 57819136 bytes
+PID: 1636, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1637, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1785, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1846, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1881, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1894, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 8372224 bytes
+PID: 1911, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 1937, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 1945, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1952, Name: python3.11, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1981, Name: python3.11, CPU: 0.00%, Memory: 1032192 bytes
+PID: 1994, Name: Python, CPU: 0.00%, Memory: 1032192 bytes
+PID: 2019, Name: Microsoft.VisualStudio.Code.Server, CPU: 0.01%, Memory: 13877248 bytes
+PID: 2031, Name: dotnet, CPU: 3.49%, Memory: 15532032 bytes
+PID: 2063, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 2122, Name: Microsoft.ServiceHub.Controller, CPU: 0.00%, Memory: 9027584 bytes
+PID: 2154, Name: Microsoft.VisualStudio.Code.ServiceHost, CPU: 0.01%, Memory: 4489216 bytes
+PID: 2156, Name: Microsoft.VisualStudio.Code.ServiceHost, CPU: 0.00%, Memory: 4620288 bytes
+PID: 2179, Name: dotnet, CPU: 0.00%, Memory: 1097728 bytes
+PID: 2191, Name: systemstats, CPU: 0.00%, Memory: 2670592 bytes
+PID: 2243, Name: storedownloadd, CPU: 0.00%, Memory: 3129344 bytes
+PID: 2264, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 2284, Name: mediaremoteagent, CPU: 0.00%, Memory: 1966080 bytes
+PID: 2285, Name: avconferenced, CPU: 0.00%, Memory: 3407872 bytes
+PID: 2433, Name: CrashReporterSupportHelper, CPU: 0.00%, Memory: 2293760 bytes
+PID: 2571, Name: mdbulkimport, CPU: 0.00%, Memory: 4669440 bytes
+PID: 2908, Name: distnoted, CPU: 0.00%, Memory: 1458176 bytes
+PID: 2950, Name: UserNotificationCenter, CPU: 0.00%, Memory: 5242880 bytes
+PID: 2970, Name: cfprefsd, CPU: 0.05%, Memory: 3112960 bytes
+PID: 3062, Name: StatusKitAgent, CPU: 0.00%, Memory: 3850240 bytes
+PID: 3164, Name: passd, CPU: 0.00%, Memory: 4767744 bytes
+PID: 3659, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9191424 bytes
+PID: 3797, Name: ContextStoreAgent, CPU: 0.11%, Memory: 12861440 bytes
+PID: 3802, Name: BiomeAgent, CPU: 0.00%, Memory: 4177920 bytes
+PID: 3965, Name: PasswordBreachAgent, CPU: 0.00%, Memory: 3670016 bytes
+PID: 4887, Name: PerfPowerServices, CPU: 0.14%, Memory: 15138816 bytes
+PID: 4903, Name: prl_client_app, CPU: 0.00%, Memory: 2146304 bytes
+PID: 4939, Name: Parallels Service, CPU: 0.00%, Memory: 1064960 bytes
+PID: 4940, Name: bash, CPU: 0.00%, Memory: 262144 bytes
+PID: 4945, Name: prl_disp_service, CPU: 0.01%, Memory: 7405568 bytes
+PID: 4957, Name: bash, CPU: 0.00%, Memory: 671744 bytes
+PID: 4979, Name: prl_naptd, CPU: 0.00%, Memory: 2588672 bytes
+PID: 4988, Name: InternetSharing, CPU: 0.00%, Memory: 2015232 bytes
+PID: 5502, Name: ir_agent, CPU: 2.41%, Memory: 57114624 bytes
+PID: 5503, Name: ir_agent, CPU: 0.12%, Memory: 11075584 bytes
+PID: 5848, Name: dotnet, CPU: 3.52%, Memory: 9388032 bytes
+PID: 5855, Name: Microsoft.VisualStudio.Code.Server, CPU: 0.00%, Memory: 4653056 bytes
+PID: 5866, Name: Microsoft.ServiceHub.Controller, CPU: 0.00%, Memory: 9207808 bytes
+PID: 5889, Name: Microsoft.VisualStudio.Code.ServiceHost, CPU: 0.00%, Memory: 4620288 bytes
+PID: 5890, Name: Microsoft.VisualStudio.Code.ServiceHost, CPU: 0.00%, Memory: 4620288 bytes
+PID: 6026, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 7577, Name: plugin-container, CPU: 0.21%, Memory: 76136448 bytes
+PID: 7602, Name: plugin-container, CPU: 0.06%, Memory: 66535424 bytes
+PID: 7958, Name: plugin-container, CPU: 0.08%, Memory: 69844992 bytes
+PID: 8046, Name: plugin-container, CPU: 0.04%, Memory: 85966848 bytes
+PID: 8153, Name: mdwrite, CPU: 0.00%, Memory: 1851392 bytes
+PID: 8238, Name: Brave Browser, CPU: 0.60%, Memory: 171098112 bytes
+PID: 8253, Name: chrome_crashpad_handler, CPU: 0.00%, Memory: 1769472 bytes
+PID: 8255, Name: Brave Browser Helper (GPU), CPU: 0.26%, Memory: 67813376 bytes
+PID: 8256, Name: Brave Browser Helper, CPU: 0.18%, Memory: 50888704 bytes
+PID: 8258, Name: Brave Browser Helper, CPU: 0.02%, Memory: 16482304 bytes
+PID: 8268, Name: Brave Browser Helper (Renderer), CPU: 0.08%, Memory: 52559872 bytes
+PID: 8269, Name: Brave Browser Helper (Renderer), CPU: 0.00%, Memory: 16891904 bytes
+PID: 8316, Name: Brave Browser Helper (Renderer), CPU: 0.00%, Memory: 16400384 bytes
+PID: 8455, Name: Brave Browser Helper, CPU: 0.02%, Memory: 14893056 bytes
+PID: 8456, Name: Brave Browser Helper (Plugin), CPU: 0.02%, Memory: 11190272 bytes
+PID: 8867, Name: plugin-container, CPU: 0.06%, Memory: 40747008 bytes
+PID: 10443, Name: com.apple.AmbientDisplayAgent, CPU: 0.07%, Memory: 3801088 bytes
+PID: 11844, Name: plugin-container, CPU: 0.07%, Memory: 47448064 bytes
+PID: 11853, Name: plugin-container, CPU: 0.14%, Memory: 51085312 bytes
+PID: 11899, Name: OneDrive, CPU: 0.09%, Memory: 45039616 bytes
+PID: 11900, Name: Microsoft SharePoint, CPU: 0.02%, Memory: 26558464 bytes
+PID: 13322, Name: plugin-container, CPU: 0.01%, Memory: 46399488 bytes
+PID: 13341, Name: usermanagerd, CPU: 0.00%, Memory: 3932160 bytes
+PID: 13524, Name: nehelper, CPU: 0.01%, Memory: 7323648 bytes
+PID: 14028, Name: Brave Browser Helper (Renderer), CPU: 0.03%, Memory: 29589504 bytes
+PID: 14803, Name: UIKitSystem, CPU: 0.01%, Memory: 29229056 bytes
+PID: 15482, Name: plugin-container, CPU: 0.01%, Memory: 48726016 bytes
+PID: 15711, Name: ShareSheetUI, CPU: 0.00%, Memory: 7602176 bytes
+PID: 15843, Name: login, CPU: 0.00%, Memory: 4521984 bytes
+PID: 15847, Name: fish, CPU: 0.10%, Memory: 1785856 bytes
+PID: 16068, Name: ShipIt, CPU: 0.00%, Memory: 2342912 bytes
+PID: 16192, Name: StandaloneUpdaterDaemon, CPU: 0.00%, Memory: 4014080 bytes
+PID: 17262, Name: plugin-container, CPU: 0.10%, Memory: 51167232 bytes
+PID: 17547, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9273344 bytes
+PID: 17573, Name: plugin-container, CPU: 1.51%, Memory: 323141632 bytes
+PID: 17681, Name: com.apple.WebKit.GPU, CPU: 0.00%, Memory: 4145152 bytes
+PID: 17683, Name: com.apple.WebKit.WebContent, CPU: 0.00%, Memory: 2277376 bytes
+PID: 17690, Name: com.apple.WebKit.Networking, CPU: 0.00%, Memory: 4997120 bytes
+PID: 17706, Name: com.apple.WebKit.WebContent, CPU: 0.00%, Memory: 2260992 bytes
+PID: 17720, Name: com.apple.WebKit.WebContent, CPU: 0.00%, Memory: 1572864 bytes
+PID: 18467, Name: com.apple.DriverKit.AppleUserECM, CPU: 0.81%, Memory: 6881280 bytes
+PID: 18468, Name: com.apple.DriverKit.AppleUserECM, CPU: 0.00%, Memory: 131072 bytes
+PID: 18993, Name: seserviced, CPU: 0.00%, Memory: 2801664 bytes
+PID: 19453, Name: plugin-container, CPU: 1.40%, Memory: 156172288 bytes
+PID: 20190, Name: ssh, CPU: 0.07%, Memory: 1359872 bytes
+PID: 20335, Name: plugin-container, CPU: 0.07%, Memory: 38158336 bytes
+PID: 21277, Name: plugin-container, CPU: 0.48%, Memory: 75857920 bytes
+PID: 21828, Name: softwareupdated, CPU: 0.02%, Memory: 13926400 bytes
+PID: 21829, Name: suhelperd, CPU: 0.00%, Memory: 5914624 bytes
+PID: 21869, Name: com.apple.hiservices-xpcservice, CPU: 0.01%, Memory: 2949120 bytes
+PID: 21949, Name: Core Audio Driver (MSTeamsAudioDevice.driver), CPU: 0.01%, Memory: 6029312 bytes
+PID: 22104, Name: containermanagerd, CPU: 0.04%, Memory: 4554752 bytes
+PID: 22247, Name: secinitd, CPU: 0.01%, Memory: 7094272 bytes
+PID: 22257, Name: sandboxd, CPU: 0.01%, Memory: 4898816 bytes
+PID: 23070, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 10158080 bytes
+PID: 24212, Name: IMAutomaticHistoryDeletionAgent, CPU: 0.00%, Memory: 3604480 bytes
+PID: 24932, Name: ssh-agent, CPU: 0.00%, Memory: 917504 bytes
+PID: 25933, Name: plugin-container, CPU: 0.08%, Memory: 70549504 bytes
+PID: 26512, Name: plugin-container, CPU: 0.05%, Memory: 49233920 bytes
+PID: 29471, Name: Slack, CPU: 0.21%, Memory: 68173824 bytes
+PID: 29489, Name: chrome_crashpad_handler, CPU: 0.00%, Memory: 1949696 bytes
+PID: 29491, Name: Slack Helper (GPU), CPU: 0.24%, Memory: 26607616 bytes
+PID: 29492, Name: Slack Helper, CPU: 0.05%, Memory: 20021248 bytes
+PID: 29495, Name: Slack Helper (Renderer), CPU: 0.40%, Memory: 90898432 bytes
+PID: 29513, Name: Slack Helper, CPU: 0.01%, Memory: 8093696 bytes
+PID: 29514, Name: Slack Helper (Plugin), CPU: 0.01%, Memory: 9273344 bytes
+PID: 29589, Name: PrinterInstallerClient, CPU: 0.09%, Memory: 5332992 bytes
+PID: 29679, Name: mobileassetd, CPU: 0.18%, Memory: 15024128 bytes
+PID: 29839, Name: XprotectService, CPU: 0.11%, Memory: 5603328 bytes
+PID: 30642, Name: pluggablesvc, CPU: 12.50%, Memory: 27082752 bytes
+PID: 30688, Name: USBAgent, CPU: 0.00%, Memory: 2195456 bytes
+PID: 30892, Name: Brave Browser Helper (Renderer), CPU: 0.40%, Memory: 100450304 bytes
+PID: 30893, Name: Brave Browser Helper (Renderer), CPU: 0.02%, Memory: 83673088 bytes
+PID: 31021, Name: bash, CPU: 0.00%, Memory: 262144 bytes
+PID: 31025, Name: PrinterInstallerClientService, CPU: 1.77%, Memory: 13336576 bytes
+PID: 31248, Name: cupsd, CPU: 0.52%, Memory: 6586368 bytes
+PID: 31582, Name: plugin-container, CPU: 0.95%, Memory: 392429568 bytes
+PID: 31741, Name: PrinterInstallerClientService, CPU: 0.00%, Memory: 20480 bytes
+PID: 31966, Name: plugin-container, CPU: 0.02%, Memory: 53641216 bytes
+PID: 33002, Name: nsAuxiliarySvc, CPU: 0.00%, Memory: 3309568 bytes
+PID: 33067, Name: com.netskope.client.Netskope-Client.NetskopeClientMacAppProxy, CPU: 0.86%, Memory: 39370752 bytes
+PID: 34061, Name: keyboardservicesd, CPU: 0.02%, Memory: 10665984 bytes
+PID: 35822, Name: Code - Insiders Helper (Renderer), CPU: 9.37%, Memory: 235585536 bytes
+PID: 35902, Name: Brave Browser Helper (Renderer), CPU: 1.74%, Memory: 273448960 bytes
+PID: 35917, Name: Brave Browser Helper (Renderer), CPU: 0.18%, Memory: 71368704 bytes
+PID: 35958, Name: Code - Insiders Helper, CPU: 0.07%, Memory: 43319296 bytes
+PID: 35959, Name: Code - Insiders Helper (Plugin), CPU: 0.82%, Memory: 72187904 bytes
+PID: 36106, Name: fish, CPU: 0.07%, Memory: 2015232 bytes
+PID: 40012, Name: mdworker_shared, CPU: 0.08%, Memory: 16023552 bytes
+PID: 40433, Name: Core Audio Driver (NDIAudioOut.driver), CPU: 0.06%, Memory: 4849664 bytes
+PID: 40753, Name: mdworker_shared, CPU: 0.08%, Memory: 15990784 bytes
+PID: 40754, Name: mdworker_shared, CPU: 0.12%, Memory: 16089088 bytes
+PID: 40755, Name: mdworker_shared, CPU: 0.12%, Memory: 16105472 bytes
+PID: 41309, Name: ViewBridgeAuxiliary, CPU: 0.06%, Memory: 8142848 bytes
+PID: 42627, Name: FXService, CPU: 0.00%, Memory: 0 bytes
+PID: 42854, Name: PredictService, CPU: 0.00%, Memory: 0 bytes
+PID: 42978, Name: PowerChime, CPU: 0.00%, Memory: 4014080 bytes
+PID: 43128, Name: Keychain Circle Notification, CPU: 0.27%, Memory: 20430848 bytes
+PID: 43145, Name: wifip2pd, CPU: 0.26%, Memory: 12238848 bytes
+PID: 43159, Name: Core Audio Driver (NDIAudio.driver), CPU: 0.19%, Memory: 5292032 bytes
+PID: 43161, Name: com.apple.geod, CPU: 0.84%, Memory: 13680640 bytes
+PID: 43162, Name: com.apple.geod, CPU: 0.93%, Memory: 13058048 bytes
+PID: 43163, Name: com.apple.geod, CPU: 0.88%, Memory: 12926976 bytes
+PID: 43164, Name: secinitd, CPU: 0.10%, Memory: 4014080 bytes
+PID: 43165, Name: secinitd, CPU: 0.12%, Memory: 4014080 bytes
+PID: 43166, Name: cfprefsd, CPU: 0.13%, Memory: 1949696 bytes
+PID: 43167, Name: cfprefsd, CPU: 0.13%, Memory: 1933312 bytes
+PID: 43168, Name: trustd, CPU: 0.29%, Memory: 5029888 bytes
+PID: 43169, Name: trustd, CPU: 0.27%, Memory: 5029888 bytes
+PID: 43170, Name: trustdFileHelper, CPU: 0.10%, Memory: 3178496 bytes
+PID: 43171, Name: containermanagerd, CPU: 0.10%, Memory: 3489792 bytes
+PID: 43172, Name: containermanagerd, CPU: 0.10%, Memory: 3506176 bytes
+PID: 43181, Name: sleep, CPU: 0.02%, Memory: 376832 bytes
+PID: 43190, Name: com.apple.cmio.registerassistantservice, CPU: 0.22%, Memory: 17268736 bytes
+PID: 43191, Name: sysextd, CPU: 0.16%, Memory: 5636096 bytes
+PID: 43207, Name: online-authd, CPU: 0.02%, Memory: 1490944 bytes
+PID: 43236, Name: contentlinkingd, CPU: 0.11%, Memory: 4734976 bytes
+PID: 43266, Name: PlugInLibraryService, CPU: 0.06%, Memory: 1900544 bytes
+PID: 43277, Name: coreduetd, CPU: 1.77%, Memory: 14450688 bytes
+PID: 43278, Name: biomed, CPU: 3.01%, Memory: 9437184 bytes
+PID: 43279, Name: knowledge-agent, CPU: 1.25%, Memory: 21954560 bytes
+PID: 43280, Name: tccd, CPU: 0.57%, Memory: 8503296 bytes
+PID: 43281, Name: contactsd, CPU: 0.57%, Memory: 9371648 bytes
+PID: 43291, Name: calaccessd, CPU: 1.26%, Memory: 17514496 bytes
+PID: 43292, Name: CoreLocationAgent, CPU: 0.30%, Memory: 13352960 bytes
+PID: 43301, Name: mdworker_shared, CPU: 0.28%, Memory: 14761984 bytes
+PID: 43302, Name: mdworker_shared, CPU: 0.58%, Memory: 18251776 bytes
+PID: 43303, Name: mdworker_shared, CPU: 0.67%, Memory: 18202624 bytes
+PID: 43337, Name: coreauthd, CPU: 0.00%, Memory: 4554752 bytes
+PID: 43372, Name: mdworker_shared, CPU: 0.40%, Memory: 13697024 bytes
+PID: 43374, Name: mdworker_shared, CPU: 0.33%, Memory: 13697024 bytes
+PID: 43394, Name: go, CPU: 2.62%, Memory: 10715136 bytes
+PID: 43426, Name: main, CPU: 11.69%, Memory: 11911168 bytes
+PID: 44480, Name: coreauthd, CPU: 0.00%, Memory: 6733824 bytes
+PID: 44702, Name: login, CPU: 0.00%, Memory: 2129920 bytes
+PID: 44704, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 45280, Name: CommCenter, CPU: 0.01%, Memory: 7733248 bytes
+PID: 46455, Name: SyncReporter, CPU: 0.00%, Memory: 5914624 bytes
+PID: 48007, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9240576 bytes
+PID: 49013, Name: Microsoft Update Assistant, CPU: 0.03%, Memory: 16138240 bytes
+PID: 49174, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 9076736 bytes
+PID: 51170, Name: plugin-container, CPU: 0.22%, Memory: 57311232 bytes
+PID: 51238, Name: plugin-container, CPU: 0.15%, Memory: 77561856 bytes
+PID: 51341, Name: plugin-container, CPU: 0.48%, Memory: 60620800 bytes
+PID: 52486, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 10600448 bytes
+PID: 52591, Name: plugin-container, CPU: 0.07%, Memory: 38748160 bytes
+PID: 52607, Name: plugin-container, CPU: 0.06%, Memory: 45170688 bytes
+PID: 52665, Name: plugin-container, CPU: 0.48%, Memory: 99254272 bytes
+PID: 52771, Name: plugin-container, CPU: 0.04%, Memory: 67321856 bytes
+PID: 53671, Name: plugin-container, CPU: 0.04%, Memory: 81543168 bytes
+PID: 54114, Name: plugin-container, CPU: 0.12%, Memory: 97157120 bytes
+PID: 55415, Name: taskgated, CPU: 0.00%, Memory: 1736704 bytes
+PID: 58174, Name: com.apple.CodeSigningHelper, CPU: 0.01%, Memory: 2392064 bytes
+PID: 59595, Name: com.apple.WebKit.GPU, CPU: 0.00%, Memory: 2670592 bytes
+PID: 59601, Name: com.apple.WebKit.Networking, CPU: 0.00%, Memory: 3194880 bytes
+PID: 60522, Name: mediaremoted, CPU: 0.02%, Memory: 5718016 bytes
+PID: 62584, Name: tccd, CPU: 0.09%, Memory: 11649024 bytes
+PID: 62587, Name: accountsd, CPU: 0.01%, Memory: 6701056 bytes
+PID: 62967, Name: Brave Browser Helper (Renderer), CPU: 0.08%, Memory: 11288576 bytes
+PID: 66436, Name: bird, CPU: 0.00%, Memory: 4931584 bytes
+PID: 67268, Name: com.apple.WebKit.GPU, CPU: 0.00%, Memory: 2621440 bytes
+PID: 67269, Name: com.apple.WebKit.Networking, CPU: 0.00%, Memory: 3735552 bytes
+PID: 67270, Name: com.apple.WebKit.WebContent, CPU: 0.01%, Memory: 4472832 bytes
+PID: 67848, Name: Netskope Client, CPU: 0.02%, Memory: 14516224 bytes
+PID: 68225, Name: netbiosd, CPU: 0.00%, Memory: 2179072 bytes
+PID: 71871, Name: Microsoft PowerPoint, CPU: 2.03%, Memory: 136675328 bytes
+PID: 73323, Name: VDCAssistant, CPU: 0.00%, Memory: 2555904 bytes
+PID: 74867, Name: fairplayd, CPU: 0.00%, Memory: 11255808 bytes
+PID: 80248, Name: Brave Browser Helper (Renderer), CPU: 0.05%, Memory: 48889856 bytes
+PID: 80761, Name: osascript, CPU: 0.00%, Memory: 5734400 bytes
+PID: 80777, Name: secd, CPU: 0.05%, Memory: 9027584 bytes
+PID: 80795, Name: neagent, CPU: 0.00%, Memory: 10682368 bytes
+PID: 80976, Name: java-arm, CPU: 29.54%, Memory: 622886912 bytes
+PID: 81261, Name: Chromium, CPU: 0.05%, Memory: 28934144 bytes
+PID: 81265, Name: chrome_crashpad_handler, CPU: 0.00%, Memory: 1802240 bytes
+PID: 81267, Name: chrome_crashpad_handler, CPU: 0.00%, Memory: 1703936 bytes
+PID: 81272, Name: Chromium Helper (GPU), CPU: 0.08%, Memory: 9846784 bytes
+PID: 81273, Name: Chromium Helper, CPU: 0.00%, Memory: 6406144 bytes
+PID: 81276, Name: Chromium Helper (Renderer), CPU: 0.00%, Memory: 8994816 bytes
+PID: 81277, Name: Chromium Helper (Renderer), CPU: 0.00%, Memory: 7307264 bytes
+PID: 81278, Name: Chromium Helper (Renderer), CPU: 0.00%, Memory: 7487488 bytes
+PID: 81279, Name: Chromium Helper (Renderer), CPU: 0.00%, Memory: 7553024 bytes
+PID: 81284, Name: com.apple.Safari.SafeBrowsing.Service, CPU: 0.00%, Memory: 3899392 bytes
+PID: 82801, Name: node, CPU: 0.00%, Memory: 4866048 bytes
+PID: 82815, Name: node, CPU: 0.00%, Memory: 2605056 bytes
+PID: 82816, Name: node, CPU: 0.21%, Memory: 14336000 bytes
+PID: 83038, Name: com.apple.WebKit.WebContent, CPU: 0.01%, Memory: 8568832 bytes
+PID: 83057, Name: com.apple.WebKit.WebContent, CPU: 0.00%, Memory: 9322496 bytes
+PID: 84379, Name: DiskUnmountWatcher, CPU: 0.00%, Memory: 2048000 bytes
+PID: 86261, Name: Brave Browser Helper (Renderer), CPU: 0.01%, Memory: 17661952 bytes
+PID: 86273, Name: Brave Browser Helper (Renderer), CPU: 0.00%, Memory: 13320192 bytes
+PID: 88772, Name: backupd, CPU: 0.01%, Memory: 4947968 bytes
+PID: 90653, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 11173888 bytes
+PID: 90656, Name: python3.11, CPU: 0.00%, Memory: 1048576 bytes
+PID: 90657, Name: python3.11, CPU: 0.00%, Memory: 1048576 bytes
+PID: 90669, Name: Python, CPU: 0.00%, Memory: 1048576 bytes
+PID: 90862, Name: Microsoft Excel, CPU: 0.35%, Memory: 26591232 bytes
+PID: 91903, Name: nearbyd, CPU: 0.02%, Memory: 8290304 bytes
+PID: 92543, Name: ir_agent, CPU: 0.24%, Memory: 14598144 bytes
+PID: 92637, Name: plugin-container, CPU: 0.08%, Memory: 41336832 bytes
+PID: 93496, Name: firefox, CPU: 2.63%, Memory: 142327808 bytes
+PID: 93497, Name: plugin-container, CPU: 0.01%, Memory: 8241152 bytes
+PID: 93501, Name: plugin-container, CPU: 0.03%, Memory: 38600704 bytes
+PID: 93504, Name: plugin-container, CPU: 0.12%, Memory: 33587200 bytes
+PID: 93505, Name: plugin-container, CPU: 0.00%, Memory: 10092544 bytes
+PID: 93507, Name: plugin-container, CPU: 0.15%, Memory: 34144256 bytes
+PID: 93596, Name: plugin-container, CPU: 0.02%, Memory: 10141696 bytes
+PID: 93597, Name: plugin-container, CPU: 0.01%, Memory: 8896512 bytes
+PID: 93749, Name: mbuseragent, CPU: 0.00%, Memory: 2539520 bytes
+PID: 94082, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 15925248 bytes
+PID: 94692, Name: Brave Browser Helper (Renderer), CPU: 0.01%, Memory: 16072704 bytes
+PID: 94764, Name: Brave Browser Helper (Renderer), CPU: 0.00%, Memory: 11943936 bytes
+PID: 95302, Name: Code - Insiders Helper (Renderer), CPU: 0.42%, Memory: 56999936 bytes
+PID: 95408, Name: Code - Insiders Helper, CPU: 0.02%, Memory: 11059200 bytes
+PID: 95409, Name: Code - Insiders Helper (Plugin), CPU: 0.22%, Memory: 37928960 bytes
+PID: 95509, Name: Code - Insiders Helper (Plugin), CPU: 0.03%, Memory: 19283968 bytes
+PID: 95510, Name: Code - Insiders Helper (Plugin), CPU: 0.04%, Memory: 11698176 bytes
+PID: 95537, Name: java, CPU: 0.10%, Memory: 7553024 bytes
+PID: 95614, Name: java, CPU: 0.06%, Memory: 4374528 bytes
+PID: 95648, Name: fish, CPU: 0.00%, Memory: 294912 bytes
+PID: 95880, Name: fish, CPU: 0.00%, Memory: 753664 bytes
+PID: 96031, Name: Firewall, CPU: 0.00%, Memory: 999424 bytes
+PID: 96488, Name: Ctes, CPU: 0.68%, Memory: 10960896 bytes
+PID: 96628, Name: python3.11, CPU: 0.00%, Memory: 1032192 bytes
+PID: 96632, Name: fish, CPU: 0.00%, Memory: 737280 bytes
+PID: 96741, Name: Microsoft Outlook, CPU: 0.76%, Memory: 90963968 bytes
+PID: 96766, Name: com.apple.WebKit.Networking, CPU: 0.00%, Memory: 7569408 bytes
+PID: 96911, Name: IOUserBluetoothSerialDriver, CPU: 0.00%, Memory: 81920 bytes
+PID: 96912, Name: IOUserBluetoothSerialDriver, CPU: 0.00%, Memory: 81920 bytes
+PID: 97172, Name: Code - Insiders Helper (Plugin), CPU: 0.02%, Memory: 10993664 bytes
+PID: 97499, Name: Code - Insiders Helper (Plugin), CPU: 0.01%, Memory: 10141696 bytes
+PID: 97500, Name: Code - Insiders Helper (Plugin), CPU: 0.20%, Memory: 33308672 bytes
+PID: 97501, Name: Code - Insiders Helper (Plugin), CPU: 0.09%, Memory: 11599872 bytes
+PID: 97511, Name: Code - Insiders Helper (Plugin), CPU: 0.01%, Memory: 9535488 bytes
+PID: 97620, Name: WirelessRadioManagerd, CPU: 0.01%, Memory: 4554752 bytes
+PID: 97639, Name: com.apple.WebKit.GPU, CPU: 0.00%, Memory: 2899968 bytes
+PID: 97668, Name: MSTeams, CPU: 1.92%, Memory: 53297152 bytes
+PID: 97675, Name: com.microsoft.teams2.respawn, CPU: 0.00%, Memory: 1458176 bytes
+PID: 97676, Name: com.microsoft.teams2.notificationcenter, CPU: 0.01%, Memory: 6881280 bytes
+PID: 97685, Name: Microsoft Teams WebView, CPU: 0.12%, Memory: 80805888 bytes
+PID: 97702, Name: msedge_crashpad_handler, CPU: 0.00%, Memory: 1835008 bytes
+PID: 97705, Name: msedge_crashpad_handler, CPU: 0.00%, Memory: 1490944 bytes
+PID: 97711, Name: Microsoft Teams WebView Helper (GPU), CPU: 0.12%, Memory: 36536320 bytes
+PID: 97713, Name: Microsoft Teams WebView Helper, CPU: 0.03%, Memory: 29671424 bytes
+PID: 97714, Name: Microsoft Teams WebView Helper, CPU: 0.01%, Memory: 13320192 bytes
+PID: 97715, Name: Microsoft Teams WebView Helper (Renderer), CPU: 0.01%, Memory: 21872640 bytes
+PID: 97716, Name: Microsoft Teams WebView Helper (Renderer), CPU: 0.81%, Memory: 89931776 bytes
+PID: 97758, Name: Microsoft Teams WebView Helper, CPU: 0.01%, Memory: 15417344 bytes
+PID: 97759, Name: Microsoft Teams WebView Helper (Plugin), CPU: 0.01%, Memory: 11960320 bytes
+PID: 98166, Name: osascript, CPU: 0.00%, Memory: 4980736 bytes
+PID: 98201, Name: Brave Browser Helper (Renderer), CPU: 0.00%, Memory: 16351232 bytes
+PID: 98216, Name: plugin-container, CPU: 0.07%, Memory: 67420160 bytes
+PID: 98811, Name: osascript, CPU: 0.00%, Memory: 4997120 bytes
+PID: 99895, Name: trustd, CPU: 1.11%, Memory: 8404992 bytes
+PID: 99909, Name: trustd, CPU: 0.13%, Memory: 9371648 bytes
