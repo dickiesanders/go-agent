@@ -1,7 +1,3 @@
-Let's enhance your README by incorporating some ideas and links from [matiassingers/awesome-readme](https://github.com/matiassingers/awesome-readme). I'll make sure to add elements like badges, an enhanced project description, and clearer instructions for contributing. Here's the improved README:
-
----
-
 # Go-Agent
 
 ![Build Status](https://github.com/dickiesanders/go-agent/actions/workflows/build.yml/badge.svg)
