@@ -1,6 +1,8 @@
 package main
 
 import (
+    "crypto/sha256"
+    "encoding/hex"
     "flag"
     "log"
     "net"
@@ -9,6 +11,10 @@ import (
     "time"
     "runtime"
     "io"
+    "encoding/json"
+    "net/http"
+    "fmt"
+    "strings"
 
     "github.com/dickiesanders/go-agent/internal/metrics"
     "github.com/shirou/gopsutil/disk"
@@ -21,13 +27,14 @@ var isPaused int32 // 0 = running, 1 = paused
 
 // A struct to hold the collected metrics data
 type MetricsData struct {
-    CPUPercent    float64
-    MemoryUsage   uint64
-    ProcessInfo   []metrics.ProcessInfo
-    NetworkStats  []metrics.NetworkStat
-    ConnStats     []metrics.ConnectionStat
-    DiskIOStats   map[string]disk.IOCountersStat // Correct type here
-    Timestamp     time.Time
+    CPUPercent    float64                    `json:"cpu_percent"`
+    MemoryUsage   uint64                     `json:"memory_usage"`
+    ProcessInfo   []metrics.ProcessInfo      `json:"process_info"`
+    NetworkStats  []metrics.NetworkStat      `json:"network_stats"`
+    ConnStats     []metrics.ConnectionStat   `json:"conn_stats"`
+    DiskIOStats   map[string]disk.IOCountersStat `json:"disk_io_stats"`
+    Timestamp     time.Time                  `json:"timestamp"`
+    UniqueID        string                     `json:"unique_id"`
 }
 
 // OneTimeHostInfo holds information that is sent when the agent first registers
@@ -37,6 +44,14 @@ type OneTimeHostInfo struct {
     CPUInfo      *metrics.CPUInfo
     IP           string
     IsVirtual    bool
+    UniqueID     string
+}
+
+// GenerateUniqueID creates a unique, reproducible ID based on the API key, hostname, and IP.
+func GenerateUniqueID(apiKey, hostname, ip string) string {
+    data := apiKey + hostname + ip
+    hash := sha256.Sum256([]byte(data))
+    return hex.EncodeToString(hash[:])
 }
 
 // type win32_ComputerSystem struct {
@@ -65,14 +80,55 @@ func registerAgentWithHostInfo(hostInfo OneTimeHostInfo, consoleFlag bool, logge
     }
 
     logger.Printf("Is Virtual: %v\n", hostInfo.IsVirtual)
+    logger.Printf("Unique Client ID: %s\n", hostInfo.UniqueID) // Log the unique client ID
 
     // Logic to send the host information to the mothership
 }
 
 // Simulate pushing data to the server
-func pushDataToServer(data []MetricsData, logger *log.Logger) {
-    logger.Printf("Pushing %d metrics to the server...\n", len(data))
-    // Here you would add your logic to send the data to a remote server.
+func pushDataToServer(apiKey string, data []MetricsData, logger *log.Logger) {
+    // Define the API endpoint and the authorization token
+    apiEndpoint := "http://localhost:8080/receive"
+    authToken := apiKey
+
+    // Iterate over the collected metrics data
+    for _, metricsData := range data {
+        jsonData, err := json.Marshal(metricsData)
+        if err != nil {
+            logger.Printf("Error marshalling metrics data: %v", err)
+            continue
+        }
+
+        // Prepare the request body with Action and MessageBody as URL-encoded parameters
+        requestData := fmt.Sprintf("Action=SendMessage&MessageBody=%s", string(jsonData))
+
+        // Create a new HTTP POST request
+        req, err := http.NewRequest("POST", apiEndpoint, strings.NewReader(requestData))
+        if err != nil {
+            logger.Printf("Error creating HTTP request: %v", err)
+            continue
+        }
+
+        // Set necessary headers
+        req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+        req.Header.Set("Authorization", authToken)
+
+        // Send the HTTP request
+        client := &http.Client{}
+        resp, err := client.Do(req)
+        if err != nil {
+            logger.Printf("Error sending data to server: %v", err)
+            continue
+        }
+        defer resp.Body.Close()
+
+        // Check the response status code
+        if resp.StatusCode != http.StatusOK {
+            logger.Printf("Failed to push data to server. Status Code: %d", resp.StatusCode)
+        } else {
+            logger.Println("Data successfully pushed to the server")
+        }
+    }
 }
 
 func gatherBasicMetrics(logger *log.Logger) (float64, uint64) {
@@ -116,7 +172,7 @@ func gatherDiskMetrics(logger *log.Logger) map[string]disk.IOCountersStat {
 }
 
 // Gather one-time host information when the agent starts
-func gatherOneTimeHostInfo(logger *log.Logger) OneTimeHostInfo {
+func gatherOneTimeHostInfo(logger *log.Logger, apiKey string) OneTimeHostInfo {
     // Gather Hostname and FQDN
     hostname, err := os.Hostname()
     if err != nil {
@@ -134,9 +190,11 @@ func gatherOneTimeHostInfo(logger *log.Logger) OneTimeHostInfo {
 
     // Get IP address
     ip := getLocalIP(logger)
-
     // Check if the system is virtual
     isVirtual := checkIfVirtual(logger)
+
+    // Generate a unique ID based on the API key, hostname, and IP
+    uniqueID := GenerateUniqueID(apiKey, hostname, ip)
 
     return OneTimeHostInfo{
         Hostname:  hostname,
@@ -144,6 +202,7 @@ func gatherOneTimeHostInfo(logger *log.Logger) OneTimeHostInfo {
         CPUInfo:   cpuInfo,
         IP:        ip,
         IsVirtual: isVirtual,
+        UniqueID:  uniqueID,
     }
 }
 
@@ -230,7 +289,6 @@ func main() {
         // Create a multi-writer to write to both stdout and the log file
         multiWriter := io.MultiWriter(os.Stdout, file)
         logger = log.New(multiWriter, "", log.LstdFlags)
-
         logger.Println("Console flag enabled: true")
     } else {
         logger = log.New(file, "", log.LstdFlags)
@@ -238,8 +296,11 @@ func main() {
 
     logger.Println("Starting the agent...")
 
+    // Example API key for generating unique client ID
+    apiKey := "1234567890"
+
     // Register the agent with the mothership and send one-time host information
-    hostInfo := gatherOneTimeHostInfo(logger)
+    hostInfo := gatherOneTimeHostInfo(logger, apiKey)
     registerAgentWithHostInfo(hostInfo, *consoleFlag, logger)
 
     // Get the current process using the PID
@@ -264,7 +325,6 @@ func main() {
         select {
         case <-dataCollectionTicker.C:
             logger.Println("Data collection tick")
-
             // Collect metrics every 30 seconds
             cpuPercent, memoryUsage := gatherBasicMetrics(logger)
             processInfo := gatherProcessMetrics(logger)
@@ -272,13 +332,14 @@ func main() {
             diskStats := gatherDiskMetrics(logger)
 
             metricsData := MetricsData{
-                CPUPercent:  cpuPercent,
+                CPUPercent: cpuPercent,
                 MemoryUsage: memoryUsage,
                 ProcessInfo: processInfo,
                 NetworkStats: netStats,
-                ConnStats:   connStats,
+                ConnStats: connStats,
                 DiskIOStats: diskStats,
-                Timestamp:   time.Now(),
+                Timestamp: time.Now(),
+                UniqueID: hostInfo.UniqueID,
             }
 
             // Add the collected data to the buffer
@@ -290,7 +351,7 @@ func main() {
         case <-dataPushTicker.C:
             // Push data to the server every 5 minutes
             if len(metricsBuffer) > 0 {
-                pushDataToServer(metricsBuffer, logger)
+                pushDataToServer(apiKey, metricsBuffer, logger)
                 metricsBuffer = nil // Clear the buffer after pushing
             } else {
                 logger.Println("No data to push to the server.")
