@@ -275,6 +275,7 @@ func checkIfVirtualWindows(logger *log.Logger) bool {
 func main() {
     // Define the console flag
     consoleFlag := flag.Bool("console", false, "Enable console output for collected data")
+    tokenFlag := flag.String("token", "1234567890", "Provide client authentication token")
     flag.Parse()
 
     var logger *log.Logger
@@ -297,7 +298,8 @@ func main() {
     logger.Println("Starting the agent...")
 
     // Example API key for generating unique client ID
-    apiKey := "1234567890"
+    apiKey := *tokenFlag
+
 
     // Register the agent with the mothership and send one-time host information
     hostInfo := gatherOneTimeHostInfo(logger, apiKey)

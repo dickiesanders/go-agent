@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	validAPIToken = "1234567890"  // Replace with your actual token
+	validAPIToken = "9876543210"  // Replace with your actual token
 	sqsEndpoint   = "http://localhost:4100/queue/agent"
 )
 
