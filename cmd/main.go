@@ -35,6 +35,7 @@ type MetricsData struct {
     NetworkStats  []metrics.NetworkStat      `json:"network_stats"`
     ConnStats     []metrics.ConnectionStat   `json:"conn_stats"`
     DiskIOStats   map[string]disk.IOCountersStat `json:"disk_io_stats"`
+    DiskUsageInfo []metrics.DiskUsageInfo   `json:"disk_usage_stats"`
     Timestamp     time.Time                  `json:"timestamp"`
     UniqueID        string                     `json:"unique_id"`
 }
@@ -248,12 +249,21 @@ func gatherNetworkMetrics(logger *log.Logger) ([]metrics.NetworkStat, []metrics.
 }
 
 func gatherDiskMetrics(logger *log.Logger) map[string]disk.IOCountersStat {
-    diskStats, err := metrics.GatherDiskIOInfo()
+    diskIOStats, err := metrics.GatherDiskIOInfo()
     if err != nil {
         logger.Printf("Error gathering disk metrics: %v", err)
         return nil
     }
-    return diskStats
+    return diskIOStats
+}
+
+func gatherDiskUsage(logger *log.Logger) []metrics.DiskUsageInfo {
+    diskUsageInfo, err := metrics.GatherDiskUsage()
+    if err != nil {
+        logger.Printf("Error gathering disk usage: %v", err)
+        return nil
+    }
+    return diskUsageInfo
 }
 
 // Gather one-time host information when the agent starts
@@ -419,7 +429,8 @@ func main() {
             cpuPercent, memoryUsage := gatherBasicMetrics(logger)
             processInfo := gatherProcessMetrics(logger)
             netStats, connStats := gatherNetworkMetrics(logger)
-            diskStats := gatherDiskMetrics(logger)
+            diskIOStats := gatherDiskMetrics(logger)
+            diskUsageInfo := gatherDiskUsage(logger)
 
             metricsData := MetricsData{
                 CPUPercent: cpuPercent,
@@ -427,7 +438,8 @@ func main() {
                 ProcessInfo: processInfo,
                 NetworkStats: netStats,
                 ConnStats: connStats,
-                DiskIOStats: diskStats,
+                DiskIOStats: diskIOStats,
+                DiskUsageInfo: diskUsageInfo,
                 Timestamp: time.Now(),
                 UniqueID: hostInfo.UniqueID,
             }
@@ -463,6 +475,10 @@ func logMetrics(metricsData MetricsData, logger *log.Logger) {
     logger.Println("Disk I/O Statistics:")
     for name, io := range metricsData.DiskIOStats {
         logger.Printf("Disk: %s, ReadBytes: %d, WriteBytes: %d\n", name, io.ReadBytes, io.WriteBytes)
+    }
+    logger.Println("Disk Usage Statistics:")
+    for _, disk := range metricsData.DiskUsageInfo {
+        logger.Printf("Device: %s, Total: %d, Free: %d, Used: %d, UsedPercent: %d, Mountpoint:%s\n", disk.Device, disk.Total, disk.Free, disk.Used, disk.UsedPercent, disk.Mountpoint)
     }
     logger.Println("Network I/O Statistics:")
     for _, io := range metricsData.NetworkStats {

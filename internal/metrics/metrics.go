@@ -46,6 +46,15 @@ type ProcessInfo struct {
     MemoryUsage uint64
 }
 
+type DiskUsageInfo struct {
+    Device      string  `json:"device"`       // Filesystem
+    Total       uint64  `json:"total"`        // Size
+    Free        uint64  `json:"free"`         // Available
+    Used        uint64  `json:"used"`         // Used
+    UsedPercent float64 `json:"used_percent"` // Use%
+    Mountpoint  string  `json:"mountpoint"`   // Mounted on
+}
+
 func GatherBasicMetrics() (float64, uint64, error) {
     // Gather CPU percentage using gopsutil/cpu
     cpuPercents, err := cpu.Percent(0, false)
@@ -144,6 +153,40 @@ func GatherDiskIOInfo() (map[string]disk.IOCountersStat, error) {
     }
     return ioCounters, nil
 }
+
+// GatherDiskUsage collects disk size and usage information for all partitions
+func GatherDiskUsage() ([]DiskUsageInfo, error) {
+    // Get all partitions/mount points
+    partitions, err := disk.Partitions(true)
+    if err != nil {
+        log.Printf("Error gathering disk partitions: %v", err)
+        return nil, err
+    }
+
+    var diskUsages []DiskUsageInfo
+
+    // Iterate over each partition and gather usage info
+    for _, partition := range partitions {
+        usageStat, err := disk.Usage(partition.Mountpoint)
+        if err != nil {
+            log.Printf("Error gathering disk usage for partition %s: %v", partition.Mountpoint, err)
+            continue
+        }
+
+        // Create a DiskUsageInfo struct with detailed information
+        diskUsages = append(diskUsages, DiskUsageInfo{
+            Device:        partition.Device, // Filesystem
+            Total:       usageStat.Total,  // Size
+            Free:        usageStat.Free,   // Available
+            Used:        usageStat.Used,   // Used
+            UsedPercent: usageStat.UsedPercent, // Use%
+            Mountpoint:  usageStat.Path,   // Mounted on
+        })
+    }
+
+    return diskUsages, nil
+}
+
 
 // GatherProcessMetrics collects information about running processes, including CPU and memory usage
 func GatherProcessMetrics() ([]ProcessInfo, error) {
