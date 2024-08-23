@@ -6,11 +6,13 @@ import (
     "flag"
     "log"
     "net"
+    "net/url"
     "os"
     "sync/atomic"
     "time"
     "runtime"
     "io"
+    "io/ioutil"
     "encoding/json"
     "net/http"
     "fmt"
@@ -85,25 +87,83 @@ func registerAgentWithHostInfo(hostInfo OneTimeHostInfo, consoleFlag bool, logge
     // Logic to send the host information to the mothership
 }
 
-// Simulate pushing data to the server
-func pushDataToServer(apiKey string, data []MetricsData, logger *log.Logger) {
-    // Define the API endpoint and the authorization token
-    apiEndpoint := "http://localhost:8080/receive"
+func pushHostInfoToServer(apiKey string, hostInfo OneTimeHostInfo, queueName string, logger *log.Logger) {
+    // Define the API endpoint for the registration queue
+    apiEndpoint := fmt.Sprintf("http://localhost:8080/receive/%s", queueName)
     authToken := apiKey
 
-    // Iterate over the collected metrics data
-    for _, metricsData := range data {
-        jsonData, err := json.Marshal(metricsData)
-        if err != nil {
-            logger.Printf("Error marshalling metrics data: %v", err)
-            continue
+    // Marshal the hostInfo to JSON format
+    jsonData, err := json.Marshal(hostInfo)
+    if err != nil {
+        logger.Printf("Error marshalling host information: %v", err)
+        return
+    }
+
+    // Prepare the request body with Action and MessageBody as URL-encoded parameters
+    requestData := fmt.Sprintf("Action=SendMessage&MessageBody=%s", string(jsonData))
+
+    // Create a new HTTP POST request
+    req, err := http.NewRequest("POST", apiEndpoint, strings.NewReader(requestData))
+    if err != nil {
+        logger.Printf("Error creating HTTP request: %v", err)
+        return
+    }
+
+    // Set necessary headers
+    req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+    req.Header.Set("Authorization", authToken)
+
+    // Send the HTTP request
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        logger.Printf("Error sending host information to server: %v", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    // Check the response status code
+    if resp.StatusCode != http.StatusOK {
+        logger.Printf("Failed to push host information to server. Status Code: %d", resp.StatusCode)
+    } else {
+        logger.Println("Host information successfully pushed to the registration queue")
+    }
+}
+
+// Pushing data to the server in batches of up to 10 messages
+func pushDataToServer(apiKey string, data []MetricsData, queueName string, logger *log.Logger) {
+    // Define the API endpoint and the authorization token
+    apiEndpoint := fmt.Sprintf("http://localhost:8080/receive/%s", queueName)
+    authToken := apiKey
+
+    // Iterate over the collected metrics data in batches of up to 10
+    for i := 0; i < len(data); i += 10 {
+        // Create a batch of up to 10 messages
+        batch := data[i:min(i+10, len(data))]
+
+        // Prepare the SendMessageBatch payload in URL-encoded format
+        var payloadEntries []string
+        for j, metric := range batch {
+            messageBody, err := json.Marshal(metric)
+            if err != nil {
+                logger.Printf("Error marshalling metrics data: %v", err)
+                continue
+            }
+
+            // Create the entries as URL-encoded parameters
+            entry := fmt.Sprintf(
+                "SendMessageBatchRequestEntry.%d.Id=msg-%d&SendMessageBatchRequestEntry.%d.MessageBody=%s",
+                j+1, j+1, j+1, url.QueryEscape(string(messageBody)))
+            payloadEntries = append(payloadEntries, entry)
         }
 
-        // Prepare the request body with Action and MessageBody as URL-encoded parameters
-        requestData := fmt.Sprintf("Action=SendMessage&MessageBody=%s", string(jsonData))
+        // Join the entries to form the full payload
+        payload := fmt.Sprintf("Action=SendMessageBatch&QueueUrl=%s&Version=2012-05-01&%s",
+            url.QueryEscape(apiEndpoint),
+            strings.Join(payloadEntries, "&"))
 
         // Create a new HTTP POST request
-        req, err := http.NewRequest("POST", apiEndpoint, strings.NewReader(requestData))
+        req, err := http.NewRequest("POST", apiEndpoint, strings.NewReader(payload))
         if err != nil {
             logger.Printf("Error creating HTTP request: %v", err)
             continue
@@ -113,22 +173,47 @@ func pushDataToServer(apiKey string, data []MetricsData, logger *log.Logger) {
         req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
         req.Header.Set("Authorization", authToken)
 
-        // Send the HTTP request
+        // Make the HTTP request
         client := &http.Client{}
         resp, err := client.Do(req)
         if err != nil {
-            logger.Printf("Error sending data to server: %v", err)
+            logger.Printf("Error sending HTTP request: %v", err)
             continue
         }
-        defer resp.Body.Close()
 
-        // Check the response status code
+        // Read and log the response body for further diagnosis
+        body, err := ioutil.ReadAll(resp.Body)
+        if err != nil {
+            logger.Printf("Error reading response body: %v", err)
+        } else {
+            logger.Printf("Response Body: %s", string(body))
+        }
+        resp.Body.Close()
+
+        // Log the response
         if resp.StatusCode != http.StatusOK {
             logger.Printf("Failed to push data to server. Status Code: %d", resp.StatusCode)
         } else {
             logger.Println("Data successfully pushed to the server")
         }
     }
+}
+
+// Helper function to format batch entries into the required format
+// func formatEntries(entries []map[string]string) string {
+//     formattedEntries, err := json.Marshal(entries)
+//     if err != nil {
+//         return ""
+//     }
+//     return string(formattedEntries)
+// }
+
+// Helper function to get the minimum of two integers
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
 }
 
 func gatherBasicMetrics(logger *log.Logger) (float64, uint64) {
@@ -305,6 +390,9 @@ func main() {
     hostInfo := gatherOneTimeHostInfo(logger, apiKey)
     registerAgentWithHostInfo(hostInfo, *consoleFlag, logger)
 
+    // Push one-time host information to the registration queue
+    pushHostInfoToServer(apiKey, hostInfo, "register", logger)
+
     // Get the current process using the PID
     pid := int32(os.Getpid())
     proc, err := process.NewProcess(pid)
@@ -353,7 +441,7 @@ func main() {
         case <-dataPushTicker.C:
             // Push data to the server every 5 minutes
             if len(metricsBuffer) > 0 {
-                pushDataToServer(apiKey, metricsBuffer, logger)
+                pushDataToServer(apiKey, metricsBuffer, "agent", logger)
                 metricsBuffer = nil // Clear the buffer after pushing
             } else {
                 logger.Println("No data to push to the server.")
