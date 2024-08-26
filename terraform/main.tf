@@ -100,71 +100,19 @@ resource "aws_sqs_queue" "register_queue" {
   name = "register-queue"
 }
 
-# # API Gateway integration with SQS (Agent)
-# resource "aws_apigatewayv2_integration" "sqs_agent_integration" {
-#   api_id             = aws_apigatewayv2_api.api_gw.id
-#   integration_type   = "AWS_PROXY"
-#   integration_method = "POST"  # HTTP Method
-#   integration_uri    = "arn:aws:apigateway:${var.region}:sqs:path/${aws_sqs_queue.agent_queue.name}"
-#   passthrough_behavior = "WHEN_NO_MATCH"
-
-#   request_templates = {
-#     "application/x-www-form-urlencoded" = <<-EOT
-#       Action=SendMessageBatch
-#       &QueueUrl=${aws_sqs_queue.agent_queue.url}
-#       &Version=2012-05-01
-#       &SendMessageBatchRequestEntry.1.Id=msg_001
-#       &SendMessageBatchRequestEntry.1.MessageBody=test message body 1
-#       &SendMessageBatchRequestEntry.2.Id=msg_002
-#       &SendMessageBatchRequestEntry.2.MessageBody=test message body 2
-#       &SendMessageBatchRequestEntry.3.Id=msg_003
-#       &SendMessageBatchRequestEntry.3.MessageBody=test message body 3
-#       &SendMessageBatchRequestEntry.4.Id=msg_004
-#       &SendMessageBatchRequestEntry.4.MessageBody=test message body 4
-#       &SendMessageBatchRequestEntry.5.Id=msg_005
-#       &SendMessageBatchRequestEntry.5.MessageBody=test message body 5
-#       &SendMessageBatchRequestEntry.6.Id=msg_006
-#       &SendMessageBatchRequestEntry.6.MessageBody=test message body 6
-#       &SendMessageBatchRequestEntry.7.Id=msg_007
-#       &SendMessageBatchRequestEntry.7.MessageBody=test message body 7
-#       &SendMessageBatchRequestEntry.8.Id=msg_008
-#       &SendMessageBatchRequestEntry.8.MessageBody=test message body 8
-#       &SendMessageBatchRequestEntry.9.Id=msg_009
-#       &SendMessageBatchRequestEntry.9.MessageBody=test message body 9
-#       &SendMessageBatchRequestEntry.10.Id=msg_010
-#       &SendMessageBatchRequestEntry.10.MessageBody=test message body 10
-#     EOT
-#   }
-# }
-
-# # API Gateway integration with SQS (Register)
-# resource "aws_apigatewayv2_integration" "sqs_register_integration" {
-#   api_id             = aws_apigatewayv2_api.api_gw.id
-#   integration_type   = "AWS_PROXY"
-#   integration_method = "POST"  # HTTP Method
-#   integration_uri    = "arn:aws:apigateway:${var.region}:sqs:path/${aws_sqs_queue.register_queue.name}"
-#   passthrough_behavior = "WHEN_NO_MATCH"
-
-#   request_templates = {
-#     "application/x-www-form-urlencoded" = <<-EOT
-#       Action=SendMessage&MessageBody=$input.body
-#     EOT
-#   }
-# }
-# API Gateway integration with SQS (Agent)
 resource "aws_apigatewayv2_integration" "sqs_agent_integration" {
   api_id              = aws_apigatewayv2_api.api_gw.id
   credentials_arn     = aws_iam_role.api_gw_role.arn
   description         = "SQS Agent Integration"
   integration_type    = "AWS_PROXY"
-  integration_subtype = "SQS-SendMessageBatch"
+  integration_subtype = "SQS-SendMessage"
 
   request_parameters = {
     "QueueUrl"    = "$request.header.queueUrl"
     "MessageBody" = "$request.body.message"
   }
 
-  payload_format_version = "2.0"
+  # payload_format_version = "2.0"
 }
 
 # API Gateway integration with SQS (Register)
@@ -180,7 +128,7 @@ resource "aws_apigatewayv2_integration" "sqs_register_integration" {
     "MessageBody" = "$request.body.message"
   }
 
-  payload_format_version = "2.0"
+  # payload_format_version = "2.0"
 }
 
 # API Gateway definition
@@ -237,22 +185,11 @@ resource "aws_iam_role_policy" "api_gw_policy" {
     Statement = [
       {
         Action   = [
-          "sqs:SendMessage", 
-          "sqs:SendMessageBatch",
+          "sqs:SendMessage",
         ]
         Effect   = "Allow"
         Resource = [aws_sqs_queue.agent_queue.arn, aws_sqs_queue.register_queue.arn]
       }
     ]
   })
-}
-
-# API Gateway Authorizer
-resource "aws_apigatewayv2_authorizer" "api_gw_authorizer" {
-  name                       = "my-authorizer"
-  api_id                     = aws_apigatewayv2_api.api_gw.id
-  authorizer_type            = "REQUEST"
-  identity_sources           = ["$request.header.Authorization"]
-  authorizer_uri             = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${var.region}:${var.account_id}:function:my-auth-lambda/invocations"
-  authorizer_credentials_arn = "arn:aws:iam::${var.account_id}:role/my-authorizer-role"
 }

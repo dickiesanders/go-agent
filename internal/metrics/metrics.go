@@ -175,7 +175,7 @@ func GatherDiskUsage() ([]DiskUsageInfo, error) {
 
         // Create a DiskUsageInfo struct with detailed information
         diskUsages = append(diskUsages, DiskUsageInfo{
-            Device:        partition.Device, // Filesystem
+            Device:      partition.Device, // Filesystem
             Total:       usageStat.Total,  // Size
             Free:        usageStat.Free,   // Available
             Used:        usageStat.Used,   // Used

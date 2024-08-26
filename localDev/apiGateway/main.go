@@ -11,8 +11,8 @@ import (
 )
 
 const (
-	validAPIToken = "9876543210"  // Replace with your actual token
-	baseSQSEndpoint = "http://localhost:4100/queue/" // Base SQS endpoint
+	validAPIToken    = "9876543210"           // Replace with your actual token
+	baseSQSEndpoint  = "http://localhost:4100/queue/" // Base SQS endpoint
 )
 
 // Middleware to check API token
@@ -29,16 +29,29 @@ func checkAPIToken(next http.Handler) http.Handler {
 
 // Handler to receive data and forward to the correct SQS queue
 func receiveAndForwardToSQS(w http.ResponseWriter, r *http.Request) {
-	// Extract the queue name from the URL path
+	// Log the received request
+	log.Printf("Received request for URL: %s", r.URL.Path)
+
+	// Extract the queue name from the URL path (assuming /queueName format)
 	parts := strings.Split(r.URL.Path, "/")
-	if len(parts) < 3 {
+
+	// Trim whitespace around each part
+	for i, part := range parts {
+		parts[i] = strings.TrimSpace(part)
+	}
+
+	log.Printf("URL parts: %v", parts)
+	if len(parts) < 2 || parts[1] == "" {
 		http.Error(w, "Queue not specified", http.StatusBadRequest)
 		return
 	}
-	queueName := parts[2]
+	queueName := parts[1] // Queue name is now at index 1
 
 	// Construct the SQS endpoint dynamically
 	sqsEndpoint := baseSQSEndpoint + queueName
+
+	// Log the SQS endpoint being used
+	log.Printf("Forwarding to SQS endpoint: %s", sqsEndpoint)
 
 	// Read the request body
 	body, err := ioutil.ReadAll(r.Body)
@@ -63,10 +76,10 @@ func receiveAndForwardToSQS(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/receive/", receiveAndForwardToSQS) // The trailing slash allows dynamic paths
+	mux.HandleFunc("/", receiveAndForwardToSQS) // The trailing slash allows dynamic paths
 
 	// Apply token-checking middleware
-	http.Handle("/receive/", checkAPIToken(mux)) // Apply to the entire path
+	http.Handle("/", checkAPIToken(mux)) // Apply to the entire path
 
 	port := "8080"
 	if p := os.Getenv("PORT"); p != "" {
